@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,11 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('skus', function (Blueprint $table) {
             $table->id();
-            $table->text('description')->nullable();
-            $table->foreignId('category_id')->nullable()->constrained();
-            $table->foreignId('sku_id')->nullable()->constrained();
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->string('code')->unique();
+            $table->integer('unit_cost')->default(0);
+            $table->integer('stock')->default(0);
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('skus');
     }
 };
