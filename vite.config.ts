@@ -24,4 +24,12 @@ export default defineConfig({
     esbuild: {
         jsx: 'automatic',
     },
+    server: {
+    host: '0.0.0.0', // Expose Vite on local network
+        port: 5173,
+        cors: true,      // Enable CORS headers for browser accept script from other ports
+        hmr: {
+            host: '192.168.157.132', // VM IP address
+        },
+}
 });
