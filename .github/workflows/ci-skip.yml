@@ -1,0 +1,19 @@
+name: tests  # Skip docs and other stuff when pull
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'README.md'
+      - 'docs/**'
+      - '.github/pull_request_template.md'
+      - '.gitignore'
+
+jobs:
+  # Only return a success status code
+  skip-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip tests for documentation changes
+        run: echo "Only docs changed."
