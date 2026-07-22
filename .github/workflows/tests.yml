@@ -3,16 +3,15 @@ name: tests
 on:
   push:
     branches:
-      - develop
       - main
-      - master
-      - workos
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'
+      - '.github/pull_request_template.md'
+      - '.gitignore'
   pull_request:
     branches:
-      - develop
       - main
-      - master
-      - workos
 
 jobs:
   ci:
