@@ -12,9 +12,13 @@ class Product extends Model
 
     protected $fillable = ['name', 'description', 'category_id'];
 
-    // Relationship: Product have 1 Sku:
-    public function sku()
+    public function category()
     {
-        return $this->hasOne(Sku::class);
+        return $this->belongsTo(Category::class);
+    }
+
+    public function skus()
+    {
+        return $this->hasMany(Sku::class);
     }
 }
