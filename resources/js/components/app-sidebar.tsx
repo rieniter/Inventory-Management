@@ -15,11 +15,27 @@ import {
 import type { NavItem } from '@/types';
 import AppLogo from './app-logo';
 import { dashboard } from '@/routes';
+import products from '@/routes/dashboard/products';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         href: dashboard(),
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Categories',
+        href: '/dashboard/categories',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Skus',
+        href: '/dashboard/skus',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Products',
+        href: '/dashboard/products',
         icon: LayoutGrid,
     },
 ];

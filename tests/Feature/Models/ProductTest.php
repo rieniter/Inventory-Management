@@ -1,16 +1,20 @@
 <?php
-
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Sku;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
+use Inertia\Testing\AssertableInertia;
 use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\actingAs;
 use function PHPUnit\Framework\assertCount;
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertInstanceOf;
 use function PHPUnit\Framework\assertTrue;
+use function Pest\Laravel\get;
+use function Pest\Laravel\post;
 
 uses(RefreshDatabase::class);
 
@@ -51,3 +55,22 @@ describe('product created and relationship', function(){
     });
 });
 
+describe('products auth', function(){
+
+    test('unauthenticated users are redirected from products page', function(){
+        get(route('dashboard.products.index'))->assertRedirect(route('login'));
+    });
+
+    test('authenticated user can view products list with inertia property', function(){
+        $user = User::factory()->create([
+            'email_verified_at' => now()
+        ]);
+        $product = Sku::factory()->create();
+
+        actingAs($user)->get(route('dashboard.products.index'))
+        ->assertStatus(200)
+        ->assertInertia(fn(AssertableInertia $page) => $page
+            ->component('products/index')
+            ->has('products.data', $product->id));
+    });
+});
