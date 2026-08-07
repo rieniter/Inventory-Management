@@ -1,6 +1,5 @@
-import {Link, usePage} from "@inertiajs/react"
-import { Sku } from "@/types/model"
-import { PaginatedData } from "@/types/paginated";
+import type { Sku } from "@/types/model"
+import type { PaginatedData } from "@/types/paginated";
 
 interface SkusIndexProps {
   skus: PaginatedData<Sku>;

@@ -1,6 +1,6 @@
-import {Link, usePage} from "@inertiajs/react"
-import { Product } from "@/types/model";
-import { PaginatedData } from "@/types/paginated";
+import {Link} from "@inertiajs/react"
+import type { Product } from "@/types/model";
+import type { PaginatedData } from "@/types/paginated";
 
 
 interface ProductsIndexProps {

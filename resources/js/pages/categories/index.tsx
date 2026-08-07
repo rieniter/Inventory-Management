@@ -1,7 +1,6 @@
-import {Link, usePage} from "@inertiajs/react"
-import { Category } from "@/types/model"
-import { PaginatedData } from "@/types/paginated";
-import CategoryController from "@/actions/App/Http/Controllers/CategoryController";
+import {Link} from "@inertiajs/react"
+import type { Category } from "@/types/model"
+import type { PaginatedData } from "@/types/paginated";
 
 interface CategoriesIndexProps {
   categories: PaginatedData<Category>;
