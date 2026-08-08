@@ -12,14 +12,29 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
 import AppLogo from './app-logo';
-import { dashboard } from '@/routes';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         href: dashboard(),
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Categories',
+        href: '/dashboard/categories',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Skus',
+        href: '/dashboard/skus',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Products',
+        href: '/dashboard/products',
         icon: LayoutGrid,
     },
 ];
